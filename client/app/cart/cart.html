@@ -1,79 +1,143 @@
-<style>
-/*td{padding: 0 5px;}*/
-</style>
+<!-- Main Wrapper -->
+<div class="wrapper grey-background" style="margin-top:100px">
+    <div class="container">
+        <div class="row">
+            <div class="col l12 col m12 col s12 center-align">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="#">MarketPlace</a> <i class="fa fa-angle-right"></i> Shop <i class="fa fa-angle-right"></i>Shopping Cart
+                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l12 col m12 col s12">
+                <!-- Shopping Cart -->
+                <div class="shopping-cart z-depth-1">
 
-<button type="button" class="close" ng-click="cancel();">
-    <i class="fa fa-times-circle-o" style="margin:10px;color:blue;"></i>
-</button>
+                   
+                    <table class="bordered">
+                        <thead>
+                        <!-- table Title -->
+                        <tr>
+                            <th class="width-150">Photo</th>
+                            <th class="left">Title</th>
+                            <th>Cost</th>
+                            <th>Number</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                        </thead>
 
-<div class="modal-header">
-    <h3 class="modal-title">MediaCart Details</h3> Total Amount: {{cart.getTotalPrice() | currency}} - ({{cart.getTotalCount()}} items)
-</div>
+                        <tbody>
+                                <tr  ng-repeat="item in cart.items">
+                                    <!-- product Image -->
+                                    <td> <img  ng-src="/assets/products/{{item.image}}"
+                                  err-src="/assets/images/photo.png"  class="responsive-img">
+                                    <!-- product Name -->
+                                    <td>
+                                        <div class="product-name"><div class="visible-xs">name</div>{{item.name}}<br></div>
+                                        <div class="size">&nbsp;</div>
+                                    </td>
+                                    <!-- product Cost -->
+                                    <td>
+                                    <div class="visible-xs">Price</div>{{item.price | currency}}
+                                    <input id="product_price" name="product_price" type="hidden" value="" />
+                                    </td>
+                                    <!-- product Number -->
+                                    <td>
+                                        <div class="visible-xs">Qty.</div>
+                                        <div class="number">
+                                            <input id="amnt" name="amnt" type="number" min="1" max="12" class="input-text qty" title="Qty" size="4"  ng-model="item.quantity" value="1">
+                                        </div>
+                                    </td>
+                                    <!-- product Amount -->
+                                    <td>
+                                    <div class="amount"><div id="totalPrice" class="visible-xs">Amount</div>{{item.price * item.quantity | currency}}</div>
+                                    
+                                    </td>
+                                    <!-- product Remove Button -->
+                                    <td><a  ng-click="cart.addItem({sku:item.sku}, -10000000)"><i class="mdi-action-highlight-remove"></i></a></td>
+                                </tr>
+                               
+                        </tbody>
+                    </table>
 
-<div class="modal-body">
-    <div class="actions-continue">
-        <button class="btn btn-default pull-left" ng-click="cart.clearItems();" ng-disabled="cart.getTotalCount() <= 0">Clear MediaCart</button>
-
-        <input type="text" placeholder="Filter Cart" class="form-control col-md-4" style="width:200px;margin-left:20px;" ng-model="filterCart" autofocus/>
-        <div ng-hide="cart.products">
-        <button value="Configure Campaign →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/newcampaign'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">Configure Campaign →</button></div>
-
-        <div ng-show="cart.products">
-         <button value="Checkout →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/checkout'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">Checkout →</button>
-         </div>
-        <div class="clearfix"></div>
-    </div><br/>
-
-    <table class="cart table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th></th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Remove</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- empty cart message -->
-            <tr ng-hide="cart.getTotalCount() > 0" >
-                <td class="tdCenter" colspan="7">
-                    Your MediaCart is empty. &nbsp;&nbsp;<a class="btn btn-primary" href="/" ng-click="cancel();">Build Campaign Now</a>
-                </td>
-            </tr>
-
-            <tr ng-repeat="item in cart.items | filter: filterCart">
-                <td>{{$index+1}}</td>
-                <td class="product-thumbnail">
-                    <a>
-                         <img data-ng-src="data:image/png;base64,{{item.image}}"  alt="{{item.publisher}}" width="100px" class="img-responsive">
-                    </a>
-                </td>
-
-                <td class="product-name">
-                    <!-- <a ui-sref="productDetail({id:item.sku, slug:item.slug})" ng-click="cancel();"> -->{{item.name}}<!-- </a> -->
-                </td>
-
-                <td>{{item.price | currency}}</td>
-
-                <td>
-                    <div class="input-group" style="width:105px;">
-                      <div class="input-group-addon btn" ng-disabled="item.quantity <= 1" ng-click="cart.addItem({sku:item.sku, name:item.name, slug:item.slug, mrp:item.mrp, price:item.price}, -1)">-</div>
-                      <input class="form-control" type="text" min="1" step="1" ng-model="item.quantity" ng-change="cart.saveItems()">
-                      <div class="input-group-addon btn" ng-disabled="item.quantity >= 1000" ng-click="cart.addItem({sku:item.sku, name:item.name, slug:item.slug, mrp:item.mrp, price:item.price}, +1)">+</div>
+                    <div class="left">
+                        <!-- Cintinue Shopping Button -->
+                        <button class="btn btn-flat waves-effect waves-light shopping-cart-button" type="button" onclick="location.href='/';">Continue Shopping</button>
                     </div>
-                </td>
+                    <div class="right">
+                        <!-- Clear Shopping Cart Button -->
+                        <!-- <button class="btn btn-flat waves-effect waves-light shopping-cart-button margin-right-15" onclick="Materialize.toast('<span>Shopping Cart Cleared</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000)">Clear Shopping Cart</button> -->
+                        <!-- Update Shopping Cart Button -->
+                        <button class="btn btn-flat waves-effect waves-light shopping-cart-button" onclick="location.href='/checkout';">Checkout</button>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="border"></div>
+                    <div class="order-quates">
+                        <div class="col l4 col m7 no-padding">
+                            <div class="title">Discount Codes</div>
+                            <p>Enter Your Coupon Code if you <br> Have one</p>
+                            <!-- Coupon Code Input -->
+                            <div class="col l7 no-padding margin-right-15">
+                                <input id="coupon" type="text" class="validate">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="title gift">GIFT CARD</div>
+                            <!-- Coupon Code Checkbox -->
+                            <input type="checkbox" class="filled-in" id="test5" />
+                            <label for="test5"> Use gift Card to Checkout</label>
+                        </div>
+                        
+                        <div class="col l4 col m7 no-padding">
+                            <div class="title">Delivery</div>
+                            <p>Enter delivery address if you <br> need your purchases delivered</p>
+                            <!-- Coupon Code Input -->
+                            <input placeholder='Address' id="coupon" type="text" class="validate" />
+                            
+                            <div class="clearfix"></div>
+                            <!-- Coupon Code Checkbox -->
+                            <input type="checkbox" class="filled-in" id="my_address" />
+                            <label for="my_address"> Use my address</label>
+                        </div>
 
-                <td><span><strong>{{item.price * item.quantity | currency}}</strong></span></td>
-
-                <td class="product-actions">
-                    <a title="Remove this item" class="remove" href="" ng-click="cart.addItem({sku:item.sku}, -10000000)">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                        <div class="col l4 col m5">
+                            <!-- Product Calculation -->
+                            <div class="product-calculation">
+                                <ul>
+                                    <li> Subtotal </li>
+                                    <li> Total Items </li>
+                                    <li> VAT </li>
+                                    <li class="bold">Grand Total </li>
+                                </ul>
+                                <ul class="blue-text">
+                                    <li> {{cart.getTotalPrice() | currency}}</li>
+                                    <li>({{cart.getTotalCount()}} items)</li>
+                                    <li>{{cart.getTotalPrice() *(0.15) | currency}}</li>
+                                    <li style='font-weight: 700'>{{cart.getTotalPrice() | currency}}</li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <!-- Continue Shopping Button -->
+                                <button class="btn btn-flat waves-effect waves-light checkout" type="button" onclick="window.location.href='/checkout'">Proceed to Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                   
+                            <div  ng-show="cart.getTotalCount()<1" class="center-align" style="padding-top: 25px; padding-bottom: 25px;">
+                                <div style="padding-top: 25px; padding-bottom: 25px;">
+                                    <a style="padding-top: 25px; "><i class="fa fa-shopping-cart" style="color: black;"></i></a>
+                                </div>
+                                
+                                <div class="title center-align"  style="padding-top: 25px;">Shopping Cart Empty</div>
+                                
+                                <div style="padding-top: 25px; padding-bottom: 25px;">
+                                    <button class="btn btn-flat waves-effect waves-light shopping-cart-button" type="button" onclick="location.href='index.php';">Start Shopping</button>
+                                </div>
+                            </div>
+                          
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

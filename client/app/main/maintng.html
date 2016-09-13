@@ -1,0 +1,279 @@
+
+  <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-whiteframe="4" >
+    <md-toolbar style="background-color:#d9534f">
+      <h1 class="md-toolbar-tools" style="color:#fff">TICKETING</h1>
+    </md-toolbar>
+    <md-content ng-controller="LeftCtrl">
+      <accordion close-others="true">
+        <accordion-group  is-open="isopen"
+                         ng-repeat="item in categories">
+          <accordion-heading>
+            {{item.name}}
+            <i class="pull-right fa"
+               ng-class="{'fa-arrow-down': isopen, 'fa-arrow-right': !isopen}"></i>
+          </accordion-heading>
+
+          <div class="collapsible-header waves-effect waves" style="display: block;height:40px;" ng-repeat="subitem in item.sub_categories"><a class="product-name" 
+            href="/Category/{{subitem.slug}}/{{subitem._id}}">{{subitem.name}}</a></div>
+        </accordion-group>
+      </accordion>
+</div>
+</md-content>
+</md-sidenav>
+<div class="wrapper" style="margin-top:70px">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col l12 col s12">
+
+                <div class="slider">
+                    <ul class="slides">
+                        <li>
+                            <img src="images/harare_city.jpg"> <!-- random image -->
+                            <div class="caption left-align" style="width: 40%">
+                                <h4 class="tooltipped" data-position="top" data-delay="50" data-tooltip="View Delivery Options" style="font-weight: 200; text-transform: uppercase">Affordable delivery!</h4>
+                                <h5 class="light white-text text-lighten-3">We're all about convenience</h5>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/shopping_1.jpg"> <!-- random image -->
+                            <div class="caption left-align">
+                                <h4 class="tooltipped" data-position="top" data-delay="50" data-tooltip="Experience Convenient Shopping" style="font-weight: 200;">Best shopping experience!</h4>
+                                <h5 class="light white-text text-lighten-3">We offer the best online shopping experience!</h5>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="images/shopping_2.jpg"> <!-- random image -->
+                            <div class="caption left-align">
+                                <h4 class="tooltipped" data-position="top" data-delay="50" data-tooltip="View Deals on Offer" style="font-weight: 200;">Get the best deals!</h4>
+                                <h5 class="light white-text text-lighten-3">We offer very competitive deals in any market.</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" style='margin-right: 100px'>
+            <div class="col l2 col m6 ">
+                .
+            </div>
+            <div class="col l9 col m6 ">
+                <div class="breadcrumb z-depth-1 center-align" style="background: #fff; padding: 0px 0px 5px 0px">
+                    <div class="page-title">Featured Products</div>
+                </div>
+            </div>
+        </div>
+
+        <!--Featured Products-->
+        
+                <div class="row" style='margin-right: 100px'> 
+                <div class="col l2 col m6 ">
+                    <div class="ad ">
+                        <div class="twitter">
+                        </div>
+                    </div>
+                </div>
+                <div class="col l3 col m6 " data-ng-repeat="product in products.items|limitTo:6">
+                <div class="product z-depth-1" >
+                    <!-- Product Image -->
+                    <div class="image">
+                        <a href="#">
+                           <img ng-src="/assets/products/{{product.variants[0].image}}"
+                                        err-src="/assets/images/photo.png"   class="responsive-img" alt="Product">
+                        </a>
+                        </a>
+                        <!-- Product Hover -->
+                        <div class="product-hover">
+                            <div class="button-group">
+                                   
+                                   
+                                    <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Add To Cart" onclick="Materialize.toast('<span>Item Added</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;cart.php&quot;>View Cart<a>', 5000)"><i class="fa fa-shopping-cart"></i></a>
+                                   
+                                <a class="btn tooltipped" data-position="top"  data-delay="50" data-tooltip="Add To Wishlist" onclick="Materialize.toast('<span>Item Added To Wishlist</span>', 5000)"><i class="fa fa-star"></i></a>
+                               
+                                        
+                                       
+                                        <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Gift Someone" onclick="Materialize.toast('<span>Item Added</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;cart.php&quot;>View Gifts<a>', 5000)"><i class="fa fa-gift"></i></a>
+                                      
+                               
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Description -->
+                 <div class="content">
+                        <!-- Product Name -->
+                        <div class="product-name">
+                            <a href="#">{{product.name}}</a>
+                        </div>
+                        <!-- Product Category 
+                        <div class="product-category">Category</div>-->
+                        <!-- Product Price -->
+                        <div class="product-price">{{product.variants[0].price|currency}}</div>
+                    </div>
+
+                </div>
+            </div>
+              
+            </div>
+
+        <div class="row">
+            <div class="col l6 col m6 col s12">
+                <!-- MarketPlace  Box -->
+                <div class="marketplace-blog z-depth-1">
+                    <!-- MarketPlace  Image -->
+                    <div class="image">
+                        <img alt="marketplace Image" src="images/big-news3.jpg" class="responsive-img">
+                    </div>
+                    <!-- MarketPlace  Category -->
+                    <div class="marketplace-category">
+                        <span class="purple">Promoted</span>
+                        <!-- Dropdown -->
+                        <div class="marketplace-dropdown">
+                            <a class="dropdown-button" href="javascript:void(0);" data-activates="dropdown1"><i
+                                    class="fa fa-ellipsis-v "></i></a>
+                            <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- MarketPlace  Description -->
+                    <div class="marketplace-description">
+                        <div class="marketplace-time">
+                            Trueworths
+                        </div>
+                        <div class="marketplace-title"><a href="javascript:void(0);"> 50% Off Specials</a></div>
+                        <div class="marketplace-content"><p> Shop for Perfumes On Sale! Up to 50% off department store prices. Free local shipping on orders over $59.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col l6 col m6 col s12">
+                <!-- MarketPlace  Box -->
+                <div class="marketplace-blog z-depth-1">
+                    <!-- MarketPlace  Video -->
+                    <div class="video-container no-controls">
+                        <iframe src="https://www.youtube.com/embed/2YBtspm8j8M" allowfullscreen></iframe>
+                    </div>
+                    <!-- MarketPlace  Category -->
+                    <div class="marketplace-category">
+                        <span class="orange">Promo</span>
+                        <!-- Dropdown -->
+                        <div class="marketplace-dropdown">
+                            <a class="dropdown-button" href="javascript:void(0);" data-activates="dropdown2"><i
+                                    class="fa fa-ellipsis-v "></i></a>
+                            <ul id="dropdown2" class="dropdown-content">
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- MarketPlace  Description -->
+                    <div class="marketplace-description">
+                        <div class="marketplace-title"><a href="javascript:void(0);">Brand Promotion</div>
+                        <div class="marketplace-content"><p>Creating a positive perception for your Brand, Product, Services, Profile and Reputation</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style='margin-right: 100px'>
+            <div class="col l2 col m6 ">
+                .
+            </div>
+            <div class="col l9 col m6 ">
+                <div class="breadcrumb z-depth-1 center-align" style="background: #fff; padding: 0px 0px 5px 0px">
+                    <div class="page-title">Specials</div>
+                </div>
+            </div>
+        </div>
+
+        <!--Featured Products-->
+        
+                <div class="row" style='margin-right: 100px'> 
+                <div class="col l2 col m6 ">
+                    <div class="ad ">
+                        <div class="twitter">
+                        </div>
+                    </div>
+                </div>
+                <div class="col l3 col m6 " data-ng-repeat="product in products.items|limitTo:6">
+                <div class="product z-depth-1">
+                    <!-- Product Image -->
+                    <div class="image">
+                        <a href="#">
+                           
+                            <img ng-src="/assets/products/{{product.variants[0].image}}"
+                                        err-src="/assets/images/photo.png"   class="responsive-img" alt="Product">
+                        </a>
+                        <!-- Product Hover -->
+                       <div class="product-hover">
+                            <div class="button-group">
+                                   
+                                   
+                                    <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Add To Cart" onclick="Materialize.toast('<span>Item Added</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;cart.php&quot;>View Cart<a>', 5000)"><i class="fa fa-shopping-cart"></i></a>
+                                   
+                                <a class="btn tooltipped" data-position="top"  data-delay="50" data-tooltip="Add To Wishlist" onclick="Materialize.toast('<span>Item Added To Wishlist</span>', 5000)"><i class="fa fa-star"></i></a>
+                               
+                                        
+                                       
+                                        <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Gift Someone" onclick="Materialize.toast('<span>Item Added</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;cart.php&quot;>View Gifts<a>', 5000)"><i class="fa fa-gift"></i></a>
+                                      
+                               
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Description -->
+                    <div class="content">
+                        <!-- Product Name -->
+                        <div class="product-name">
+                            <a href="#">{{product.name}}</a>
+                        </div>
+                        <!-- Product Category 
+                        <div class="product-category">Category</div>-->
+                        <!-- Product Price -->
+                        <div class="product-price">{{product.variants[0].price|currency}}</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+      
+
+        <div class="row">
+            <div class="col l12 col m12 col s12 center-align">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb z-depth-1" style="background: #fff; margin: 30px -30px 0px -30px">
+                    <div class="page-title">Featured Brands</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col l12 col s12">
+                <div id="brand-slider">
+                    <div class="brand-box" data-content="brand 1"><img src="images/brands/1.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 2"><img src="images/brands/2.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 3"><img src="images/brands/3.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 4"><img src="images/brands/4.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 5"><img src="images/brands/5.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 6"><img src="images/brands/6.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 7"><img src="images/brands/7.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 8"><img src="images/brands/8.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 9"><img src="images/brands/9.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 10"><img src="images/brands/10.png"/></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    

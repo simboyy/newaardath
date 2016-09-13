@@ -29,7 +29,8 @@ exports.create = function (req, res, next) {
 
   console.log(req.body);
 
-  if(req.body.role){newUser.role = 'admin';} else {newUser.role = 'user'}
+ // if(req.body.role){newUser.role = 'admin';} else {newUser.role = 'user'}
+  newUser.role = 'user'
 
   newUser.save(function(err, user) {
     if (err) return validationError(res, err);
@@ -42,7 +43,7 @@ exports.create = function (req, res, next) {
  * Get a single user
  */
 
- // Updates an existing campaign in the DB.
+ // Updates an existing user in the DB.
 exports.update = function(req, res) {
   console.log(req.body);
 
@@ -51,11 +52,14 @@ exports.update = function(req, res) {
   User.findById(req.params.id, function (err, user) {
     if (err) { return handleError(res, err); }
     if(!user) { return res.status(404).send('Not Found'); }
-    
+     user.title = req.body.title;
+     user.lastname = req.body.lastname;
      user.name = req.body.name;
+     user.sex = req.body.sex;
      user.email = req.body.email;
-     user.company = req.body.company;
+     user.address = req.body.address;
      user.phone = req.body.phone;
+     user.photo = req.body.photo;
       user.save(function(err) {
         if (err) return validationError(res, err);
         res.status(200).send('OK');

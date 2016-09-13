@@ -1,13 +1,22 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('ProfileCtrl', function ($scope, socket,Users, Product, Category, Brand, Statistic,Feature, Modal, toastr, $loading, Settings) {
-    var cols = [
-      {heading:'sku',dataType:'text', sortType:'lowercase'},
-      {heading:'name',dataType:'text', sortType:'lowercase'},
-      {heading:'info',dataType:'text', sortType:'lowercase'}
-    ];
+  .controller('ProfileCtrl', function ($scope, socket,Users,Auth, Product, Category, Brand,Feature, Modal, toastr, $loading, Settings) {
+    
+    $scope.user = Auth.getCurrentUser();
 
+    console.log($scope.user.length);
+    
+
+     $scope.profile = {};
+     $scope.product = {};
+
+
+     $scope.product.logo = [];
+
+     $scope.profile.photo= [];
+
+    
 
    
 
@@ -16,13 +25,16 @@ angular.module('shopnxApp')
       //   toastr.error('Save not allowed in demo mode');
       //   return;
       // }
-      console.log(user);
+  	
+    
 
       
       $scope.user = user;
      
      
       if('_id' in user){
+
+
 
         // delete product
 
@@ -66,7 +78,9 @@ angular.module('shopnxApp')
     
 
     $scope.profileDetail = function(user){
-        if(user){ $scope.profile = user; }
+    	 $scope.profile.photo= [];
+
+        if(user){ $scope.profile = user ; }
         else{ $scope.profile = {}; }
     };
 

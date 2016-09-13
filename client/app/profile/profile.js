@@ -4,7 +4,7 @@ angular.module('shopnxApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('profile', {
-        title: 'MediaBox Profile',
+        title: 'Aardath Profile',
         url: '/profile',
         templateUrl: 'app/profile/profile.html',
         controller: 'ProfileCtrl',

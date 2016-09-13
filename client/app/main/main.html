@@ -1,208 +1,379 @@
-<link rel="stylesheet" href="bower_components/angular-loading/angular-loading.css"/>
 
-                <div class="col-md-12">
-                    <ul class="breadcrumb">
-                        <li><a ui-sref="main" href="">Home</a></li>
-                        <li ng-repeat="b in breadcrumb.items | reverse">
-                            <a href="/" ng-if="!$last">{{b.name}}</a>
-                            <span ng-if="$last">{{b.name}}</span>
-                        </li>
-                    </ul>
-                </div>
+  <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-whiteframe="4" >
+    <md-toolbar style="background-color:#d9534f">
+      <h1 class="md-toolbar-tools" style="color:#fff">CLICKMART</h1>
+    </md-toolbar>
+    <md-content ng-controller="LeftCtrl">
+      <accordion close-others="true">
+        <accordion-group  is-open="isopen"
+                         ng-repeat="item in categories">
+          <accordion-heading>
+            {{item.name}}
+            <i class="pull-right fa"
+               ng-class="{'fa-arrow-down': isopen, 'fa-arrow-right': !isopen}"></i>
+          </accordion-heading>
 
-                <div class="col-md-3">
+          <div class="collapsible-header waves-effect waves" style="display: block;height:40px;" ng-repeat="subitem in item.sub_categories"><a class="product-name" 
+            href="/Category/{{subitem.slug}}/{{subitem._id}}">{{subitem.name}}</a></div>
+        </accordion-group>
+      </accordion>
+</div>
+</md-content>
+</md-sidenav>
+<div class="wrapper" style="margin-top:70px">
+    <div class="container">
 
-     <div class="panel panel-default sidebar-menu">
+        <!--slider -->
+        <div class="row">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                  </ol>
 
-         <div class="panel-heading">
-             <h3 class="panel-title">Price Range <a class="btn btn-xs btn-danger pull-right" href="" ng-click="resetPriceRange();"><i class="fa fa-times-circle"></i> Reset</a></h3>
-         </div>
-
-         <div class="panel-body">
-
-             <form>
-                 <div class="form-group">
-                   <rzslider
-                     rz-slider-floor="priceSlider.floor"
-                     rz-slider-ceil="priceSlider.ceil"
-                     rz-slider-model="priceSlider.min"
-                     rz-slider-high="priceSlider.max"
-                     rz-slider-translate="currencyFormatting"
-                     rz-slider-on-end="filter()"></rzslider>
-
-                    $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
-                 </div>
-
-             </form>
-
-         </div>
-      </div>
-
-      <div class="panel panel-default sidebar-menu">
-
-          <div class="panel-heading">
-              <h3 class="panel-title">Categories
-                <div class="nav-search" id="nav-search">
-                        <span class="input-icon">
-                            <input placeholder="Filter Categories ..." class="nav-search-input" ng-model="filterBrand" autocomplete="off" type="text" autofocus style="width:100%">
-                            <i class="search-icon fa fa-search nav-search-icon"></i>
-                        </span>
-                </div>
-              </h3>
-          </div>
-
-          <div class="panel-body brand-filter-panel">
-
-              <form>
-                  <div class="form-group">
-                      <div class="checkbox" ng-repeat="b in brands | filter:filterBrand">
-                          <label>
-                            <input type="checkbox" value="{{b.name}}" checklist-model="fl.brands" checklist-value="b" ng-click="filter();" />
-                            {{b.name}}<span>&nbsp;</span>
-                          </label>
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active" style="height: 440px">
+                      <img src="images/shopping_1.jpg" alt="Chania">
+                      <div class="carousel-caption">
+                        <h4 class="tooltipped" data-position="top" data-delay="50" data-tooltip="View Delivery Options" style="font-weight: 200; text-transform: uppercase">Affordable delivery!</h4>
+                                <h5 class="light white-text text-lighten-3">We're all about convenience</h5>
                       </div>
-                  </div>
+                    </div>
 
-<a class="btn btn-xs btn-warning pull-right" href="" ng-repeat="b in fl.brands" ng-click="removeBrand(b);" style="margin:0 0 5px 5px;"><i class="fa fa-times-circle"></i> {{b.name}}</a>
-              </form>
+                    <div class="item" style="height: 440px">
+                      <img src="images/shopping_1.jpg" alt="Chania">
+                      <div class="carousel-caption">
+                          <h4 class="tooltipped" data-position="top" data-delay="50" data-tooltip="Experience Convenient Shopping" style="font-weight: 200;">Best shopping experience!</h4>
+                                <h5 class="light white-text text-lighten-3">We offer the best online shopping experience!</h5>
+                      </div>
+                    </div>
 
-          </div>
-      </div>
+                    <div class="item" style="height: 440px">
+                      <img src="images/shopping_2.jpg" alt="Flower">
+                      <div class="carousel-caption">
+                        <h4 class="tooltipped" data-position="top" data-delay="50" data-tooltip="View Deals on Offer" style="font-weight: 200;">Get the best deals!</h4>
+                                <h5 class="light white-text text-lighten-3">We offer very competitive deals in any market.</h5>
+                      </div>
+                    </div>
 
-      <div class="panel panel-default sidebar-menu">
-
-          <div class="panel-heading">
-              <h3 class="panel-title">Targeting Features
-                <div class="nav-search" id="nav-search">
-                        <span class="input-icon">
-                            <input placeholder="Filter Features ..." class="nav-search-input" ng-model="filterFeature" autocomplete="off" type="text" autofocus style="width:100%">
-                            <i class="search-icon fa fa-search nav-search-icon"></i>
-                        </span>
-                </div>
-              </h3>
-          </div>
-
-          <div class="panel-body">
-              <form>
-                  <div class="form-group">
-                    <div ng-repeat="k in features | filter:filterFeature">
-                        <h4>{{k.key}}</h4>
-                        <div class="checkbox" ng-repeat="f in k.v">
-                            <label>
-                              <input type="checkbox" value="{{f}}" checklist-model="fl.features[k.key]" checklist-value="f" ng-click="filter();" />
-                              {{f}}<span>&nbsp;</span>
-                            </label>
-                        </div>
+                    <div class="item" style="height: 440px">
+                      <img src="images/harare_city.jpg" alt="Flower">
+                      <div class="carousel-caption">
+                        <h4 class="tooltipped" data-position="top" data-delay="50" data-tooltip="View Deals on Offer" style="font-weight: 200;">Get the best deals!</h4>
+                                <h5 class="light white-text text-lighten-3">We offer very competitive deals in any market.</h5>
+                      </div>
                     </div>
                   </div>
-              </form>
-          </div>
-      </div>
 
-
+                  <!-- Left and right controls -->
+                  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
                 </div>
+        </div>
 
-                <div class="col-md-9">
 
-                    <div class="box info-bar">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-5 products-showing">
-                                Showing {{products.items.length}} products of {{products.count}} in: $<strong>{{priceSlider.min}}</strong> &nbsp;-&nbsp; $<strong>{{priceSlider.max}}</strong>
-                            </div>
+        </div>
 
-                            <div class="col-sm-12 col-md-7 text-right products-number-sort">
-                                <div class="row">
-                                    <form class="form-inline">
+        <div class="row" style='margin-right: 100px'>
+            <div class="col l2 col m6 ">
+                .
+            </div>
+            <div class="col l9 col m6 ">
+                <div class="breadcrumb z-depth-1 center-align" style="background: #fff; padding: 0px 0px 5px 0px">
+                    <div class="page-title">Aardath awasome deals</div>
+                </div>
+            </div>
+        </div>
 
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="products-number">
-                                                <strong>Sort</strong>
-                                                <div class="btn-group">
-                                                  <a href="" ng-repeat="o in sortOptions" ng-class="{active : o.val==products.sort}" class="btn btn-default btn-sm btn-primary"  ng-click="sortNow(o.val);">{{o.name}}</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12 col-md-8  products-number-sort">
-                                <div class="products-sort-by">
-                                  <span ng-if="fl.brands.length>0">Categories:</span>
-                                  <a class="btn btn-xs btn-warning" href="" ng-click="removeBrand(b);" ng-repeat="b in fl.brands" style="margin-left:5px;"><i class="fa fa-times-circle"></i> {{b.name}}</a>
-
-                                  <a ng-if="fl.categories.length>0" class="btn btn-xs btn-warning" href="" ng-click="removeCategory();" style="margin-left:5px;"><i class="fa fa-times-circle"></i>{{fl.categories[0].name}}</a>
-
-<span ng-repeat="features in fl.features">
-    <a ng-if="features" ng-click="removeFeatures(features);" ng-repeat="f in features" class="btn btn-xs btn-warning" href="" style="margin-left:5px;">{{f}}</a>
-</span>
-
-                                  <!-- <select ng-model="products.brand"  ng-change="navigate('Brand',products.brand);" ng-options="b.name for b in brands track by b._id" class="pull-right">
-                                      <option value="">All Brands</option>
-                                  </select> -->
-                                </div>
-                            </div>
+        <!--Featured Products-->
+        
+                <div class="row" style='margin-right: 100px'> 
+                <div class="col l2 col m6 ">
+                    <div class="ad ">
+                        <div class="twitter">
                         </div>
                     </div>
-<div infinite-scroll='scroll()' infinite-scroll-disabled='products.busy' infinite-scroll-distance='1'>
-                    <div class="row products" dw-loading="products" dw-loading-options="{text: ''}">
-                      <div class="box" ng-if="products.items.length==0 && !products.busy">
-                          <div class="row">
-                              <div class="col-sm-12">
-                                <h3>Nothing found. Try removing some filters.</h3>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-4 col-sm-6" ng-repeat="product in products.items" >
-                            <div class="product" style="height: 400px" >
-                                <div class="img-logo"  style="margin: 15px">
-                                <center>
-                                  <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                <img   width="150px" height="80px" data-ng-src="data:image/png;base64,{{product.logo[0].base64}}" data-err-src="images/png/avatar.png"/>
-                                </a>
-                                </center>
-                                
-                                </div>
-
-                                <div class="clear-fix"></div>
-                              
-                                <div class="text text-center" style="margin-top: 10px">
-                                    <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a>
+                </div>
+                <div class="col l3 col m6 " data-ng-repeat="product in products.items|limitTo:6">
+                <div class="product z-depth-1" >
+                    <!-- Product Image -->
+                    <div class="image">
+                        <a href="#">
+                           <img ng-src="/assets/products/{{product.variants[0].image}}"
+                                        err-src="/assets/images/photo.png"   class="responsive-img" alt="Product">
+                        </a>
+                        </a>
+                        <!-- Product Hover -->
+                        <div class="product-hover">
+                            <div class="button-group">
                                    
-                                    </h3>
-
-                                    <div style="margin: 10px">
-                                    <ol class="rounded-list">
-                                         <li ng-repeat="f in product.stats"><a href="#">{{f.key}} : {{f.val}}</a></li>                    
-                                    </ol>
-                                    </div>
-
-                                    <!-- <a href="/Brand/{{product.brand.name}}/{{product.brand._id}}">{{product.brand.name}}</a>                                    <a href="/Category/{{product.category.slug}}/{{product.category._id}}">{{product.category.name}} -->
-
-
-                                    
-                                   <!-- <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p>-->
-                                    <!--<p class="buttons">
-                                      <div class="btn-group">
-                                      <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">View detail</a>
-                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, -1)" ng-hide="checkCart(product._id)" class="btn btn-info">-</a>
-
-                                      <a ng-hide="checkCart(product._id)" class="btn btn-info">{{getQuantity(product._id);}}</a>
-
-                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, +1)" ng-hide="checkCart(product._id)" class="btn btn-info">+</a>
-                                      </div>
-                                      <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </p>-->
-                                </div>
-                                <!-- /.text -->
+                                   
+                                    <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Add To Cart" onclick="Materialize.toast('<span>Item Added</span>', 5000)" ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);"><i class="fa fa-shopping-cart"></i></a>
+                                   
+                                <a class="btn tooltipped" data-position="top"  data-delay="50" data-tooltip="Add To Wishlist" onclick="Materialize.toast('<span>Item Added To Wishlist</span>', 5000)" ng-click="wishlist.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);"><i class="fa fa-star"></i></a>
+                               
+ <a class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Gift Someone" onclick="Materialize.toast('<span>Item Added To Gift List</span>', 5000)" ng-click="gift.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);"><i class="fa fa-gift"></i></a>                                      
+                               
+                              
                             </div>
-                            <!-- /.product -->
                         </div>
-
-                        <!-- /.col-md-4 -->
                     </div>
-                    <!-- /.products -->
+                    <!-- Product Description -->
+                 <div class="content">
+                        <!-- Product Name -->
+                        <div class="product-name">
+                            <a href="#">{{product.name}}</a>
+                        </div>
+                        <!-- Product Category 
+                        <div class="product-category">Category</div>-->
+                        <!-- Product Price -->
+                        <div class="product-price">{{product.variants[0].price|currency}}</div>
+                    </div>
 
                 </div>
-                <!-- /.col-md-9 -->
-</div> <!-- /just to enable infinite scroll -->
+            </div>
+              
+            </div>
+
+        <div class="row">
+            <div class="col l6 col m6 col s12">
+                <!-- MarketPlace  Box -->
+                <div class="marketplace-blog z-depth-1">
+                    <!-- MarketPlace  Image -->
+                    <div class="image">
+                        <img alt="marketplace Image" src="images/big-news3.jpg" class="responsive-img">
+                    </div>
+                    <!-- MarketPlace  Category -->
+                    <div class="marketplace-category">
+                        <span class="purple">Promoted</span>
+                        <!-- Dropdown -->
+                        <div class="marketplace-dropdown">
+                            <a class="dropdown-button" href="javascript:void(0);" data-activates="dropdown1"><i
+                                    class="fa fa-ellipsis-v "></i></a>
+                            <ul id="dropdown1" class="dropdown-content">
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- MarketPlace  Description -->
+                    <div class="marketplace-description">
+                        <div class="marketplace-time">
+                            Trueworths
+                        </div>
+                        <div class="marketplace-title"><a href="javascript:void(0);"> 50% Off Specials</a></div>
+                        <div class="marketplace-content"><p> Shop for Perfumes On Sale! Up to 50% off department store prices. Free local shipping on orders over $59.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col l6 col m6 col s12">
+                <!-- MarketPlace  Box -->
+                <div class="marketplace-blog z-depth-1">
+                    <!-- MarketPlace  Video -->
+                    <div class="video-container no-controls">
+                        <iframe src="https://www.youtube.com/embed/2YBtspm8j8M" allowfullscreen></iframe>
+                    </div>
+                    <!-- MarketPlace  Category -->
+                    <div class="marketplace-category">
+                        <span class="orange">Promo</span>
+                        <!-- Dropdown -->
+                        <div class="marketplace-dropdown">
+                            <a class="dropdown-button" href="javascript:void(0);" data-activates="dropdown2"><i
+                                    class="fa fa-ellipsis-v "></i></a>
+                            <ul id="dropdown2" class="dropdown-content">
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                                <li><a href="javascript:void(0);">Option 1</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- MarketPlace  Description -->
+                    <div class="marketplace-description">
+                        <div class="marketplace-title"><a href="javascript:void(0);">Brand Promotion</div>
+                        <div class="marketplace-content"><p>Creating a positive perception for your Brand, Product, Services, Profile and Reputation</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+       <!--Category-->
+       <div class="row">
+            <div class="col l12 col m12 col s12 center-align">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb z-depth-1" style="background: #fff; margin: 30px -30px 0px -30px">
+                    <div class="page-title">Categories</div>
+                </div>
+            </div>
+        </div>
+
+
+         <div class="row">
+            
+                 <div data-ng-repeat="option in Types" class="col-md-3">
+                    <div>
+                        <a href="/Category/{{option.slug}}/{{option._id}}">
+                            <img ng-src="/assets/categories/{{option.name}}.png"
+                                err-src="/assets/images/photo.png">
+                        </a>
+
+                                <div class="text">
+                                    <a class="product-name" href="/Category/{{option.slug}}/{{option._id}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{option.name}}</b></a>
+                                   
+                                   
+                                </div>
+
+                    </div>
+                 </div>
+             </div>
+
+        <!--Featured Products-->
+         <div class="row">
+            <div class="col l12 col m12 col s12 center-align">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb z-depth-1" style="background: #fff; margin: 30px -30px 0px -30px">
+                    <div class="page-title">Specials</div>
+                </div>
+            </div>
+        </div>
+
+        
+                <div class="row" style='margin-right: 100px'> 
+                <div class="col l2 col m6 ">
+                    <div class="ad ">
+                        <div class="twitter">
+                        </div>
+                    </div>
+                </div>
+                <div class="col l3 col m6 " data-ng-repeat="product in products.items|limitTo:6">
+                <div class="product z-depth-1">
+                    <!-- Product Image -->
+                    <div class="image">
+                        <a href="#">
+                           
+                            <img ng-src="/assets/products/{{product.variants[0].image}}"
+                                        err-src="/assets/images/photo.png"   class="responsive-img" alt="Product">
+                        </a>
+                        <!-- Product Hover -->
+                       <div class="product-hover">
+                            <div class="button-group">
+                                   
+                                   
+                                    <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Add To Cart" onclick="Materialize.toast('<span>Item Added</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;cart.php&quot;>View Cart<a>', 5000)"><i class="fa fa-shopping-cart"></i></a>
+                                   
+                                <a class="btn tooltipped" data-position="top"  data-delay="50" data-tooltip="Add To Wishlist" onclick="Materialize.toast('<span>Item Added To Wishlist</span>', 5000)"><i class="fa fa-star"></i></a>
+                               
+                                        
+                                       
+                                        <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Gift Someone" onclick="Materialize.toast('<span>Item Added</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;cart.php&quot;>View Gifts<a>', 5000)"><i class="fa fa-gift"></i></a>
+                                      
+                               
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Description -->
+                    <div class="content">
+                        <!-- Product Name -->
+                        <div class="product-name">
+                            <a href="#">{{product.name}}</a>
+                        </div>
+                        <!-- Product Category 
+                        <div class="product-category">Category</div>-->
+                        <!-- Product Price -->
+                        <div class="product-price">{{product.variants[0].price|currency}}</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+      
+
+        <div class="row">
+            <div class="col l12 col m12 col s12 center-align">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb z-depth-1" style="background: #fff; margin: 30px -30px 0px -30px">
+                    <div class="page-title">Featured Brands</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col l12 col s12">
+                <div id="brand-slider">
+                    <div class="brand-box" data-content="brand 1"><img src="images/brands/1.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 2"><img src="images/brands/2.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 3"><img src="images/brands/3.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 4"><img src="images/brands/4.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 5"><img src="images/brands/5.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 6"><img src="images/brands/6.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 7"><img src="images/brands/7.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 8"><img src="images/brands/8.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 9"><img src="images/brands/9.png"/></div><!--
+                 --><div class="brand-box" data-content="brand 10"><img src="images/brands/10.png"/></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+             <div class="row">
+
+    <div class="col l12 col m12 " style="margin-bottom: 30px">
+        <div class="breadcrumb z-depth-1 center-align" style="background: #fff; padding: 0px 0px 5px 0px">
+            <div class="page-title">Catch up with the latest!</div>
+        </div>
+    </div>
+
+    <div class="col l12 col m12 col s12 order-quates">
+
+        <div class="col l6 col m6 col s12  offset-l1 ">
+            <div class="col l4 col m4 col s6">
+                <input type="checkbox" class="filled-in" id="clothing"/>
+                <label for="clothing">My Kitchen</label>
+            </div>
+            <div class="col l4 col m4 col s6">
+                <input type="checkbox" class="filled-in" id="appliances"/>
+                <label for="appliances">Fruits & Veg</label>
+            </div>
+            <div class="col l4 col m4 col s6">
+                <input type="checkbox" class="filled-in" id="technology"/>
+                <label for="technology">Beauty & Baby</label>
+            </div>
+            <div class="col l4 col m4 col s6">
+                <input type="checkbox" class="filled-in" id="house"/>
+                <label for="house">Health & Fitness</label>
+            </div>
+            <div class="col l4 col m4 col s6">
+                <input type="checkbox" class="filled-in" id="stationary"/>
+                <label for="stationary">Household</label>
+            </div>
+            <div class="col l4 col m4 col s6">
+                <input type="checkbox" class="filled-in" id="industrial"/>
+                <label for="industrial">Grocery Kombo's</label>
+            </div>
+        </div>
+        <div class="col l3 col m3 col s9">
+            <input placeholder='Email Address' id="coupon" type="email" class="validate" />
+        </div>
+        <div class="col l1 col m1 col s3">
+            <button class="btn" style="background: red" type="button">Subscribe</button>
+        </div>
+    </div>
+
+</div>
+</footer>
+    

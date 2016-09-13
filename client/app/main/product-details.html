@@ -1,179 +1,215 @@
 
-<div class="container">
-<div class="row">
-  <div class="col-sm-12 text-center">
-    <ol class="breadcrumb">
-        <li><a ui-sref="main" href="">Home</a></li>
-        <li ng-repeat="b in breadcrumb.items | reverse">
-            <a href="/" ng-if="!$last">{{b.name}}</a>
-            <span ng-if="$last">{{b.name}}</span>
-        </li>
-    </ol>
-  </div>
-    <hr class="clearfix"/>
+  <md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-whiteframe="4" >
+    <md-toolbar style="background-color:#d9534f">
+      <h1 class="md-toolbar-tools" style="color:#fff">ONLINE STORE</h1>
+    </md-toolbar>
+    <md-content ng-controller="LeftCtrl">
+      <accordion close-others="true">
+        <accordion-group  is-open="isopen"
+                         ng-repeat="item in categories">
+          <accordion-heading>
+            {{item.name}}
+            <i class="pull-right fa"
+               ng-class="{'fa-arrow-down': isopen, 'fa-arrow-right': !isopen}"></i>
+          </accordion-heading>
+
+          <div class="collapsible-header waves-effect waves" style="display: block;height:40px;" ng-repeat="subitem in item.sub_categories"><a class="product-name" 
+            href="/Category/{{subitem.slug}}/{{subitem._id}}">{{subitem.name}}</a></div>
+        </accordion-group>
+      </accordion>
 </div>
-</div>
-<div class="container">
-    <div class="row">
-      <div class="col-md-3">
-          <!-- *** MENUS AND FILTERS ***
-_________________________________________________________ -->
-          <div class="panel panel-default sidebar-menu">
-
-              <div class="panel-heading">
-                  <h3 class="panel-title">Categories</h3>
-              </div>
-              <div class="panel-body">
-                  <ul class="nav nav-pills nav-stacked category-menu">
-                      <li ng-repeat= "p in categories">
-                          <a href="category.html">{{p.name}} <span class="badge pull-right"></span></a>
-                          <ul>
-                              <li ng-repeat="c in p.sub_categories"><a href="/Category/{{c.slug}}/{{c._id}}">{{c.name}}</a>
-                              </li>
-                          </ul>
-                      </li>
-                  </ul>
-
-              </div>
-          </div>
-
-          <!-- *** MENUS AND FILTERS END *** -->
-
-          <!-- <div class="banner">
-              <a href="#">
-                  <img src="/assets/img/banner.jpg" alt="sales 2015" class="img-responsive">
-              </a>
-          </div> -->
-      </div>
-
-      <div class="col-md-9">
-          <div class="row" id="productMain">
-              <div class="col-sm-3">
-                  <div id="mainImage" style="height: 60%">
-                      <img  data-ng-src="data:image/png;base64,{{product.logo[0].base64}}"  alt="{{product.name}}" class="img-responsive">
-                  </div>
-
-                  
-
-              </div>
-              <div class="col-sm-9">
-                  <div class="box">
-                      <h3 class="text-center">{{product.name}} </h3>
-                     
-                    <div ng-if="product.info">
-                     <h4>Details</h4>
-                     <blockquote>
-                    <p>{{product.info}}</p>
-                  </blockquote> 
-                   
-                  <div ng-if="product.stats.length>0">
-                  <h4>Stats</h4>
-
-                  <div class="row">
-                    <div class="col-xs-6 col-md-3" ng-repeat="f in product.stats">
-                      <div  class="thumbnail">
-                     <p><h6><center>{{f.key}}</h6></center>  <div><center><h4>{{f.val}}</h4></center></div></p>
-                    </div>
-                  </div>
-                  </div>
-                 
-                  </div>
-
-                  <div class="row">
-                 <div class="col-sm-3">
-                   <div ng-if="product.brand">
-                  <h4>Category</h4>
-                  <ul>
-                      <li><a href="/Brand/{{product.brand.name}}/{{product.brand._id}}">{{product.brand.name}}</a></li>
-                  </ul>
-                  </div>
-                 </div>
-                  <div class="col-sm-4">
-                    <div ng-if="product.category">
-                  <h4>Platform</h4>
-                  <ul>
-                      <li><a href="/Category/{{product.category.slug}}/{{product.category._id}}">{{product.category.name}}</a></li>
-                  </ul>
-                  </div>
-                  </div>
-                 <div class="col-sm-5"> <h4>Contact Details</h4>
-                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>{{product.email}}<br>
-                           <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>{{product.phone}}
-                 </div>
-                  </div>
-
-
-                   
-                  
-
-                  </div>
-
-                      <p class="goToDescription">
-                    <a href="#details" class="scroll-to">Scroll to publisher media kit</a>
-                      </p>
-                      
-
-                  </div>
-
-              </div>
-
-          </div>
-
-
-          <div class="box" id="details">
-           <div class="row">
-            <div class="col-md-4">
-            <h4>Preview</h4>
-            <div class="box" style="height: 300px">
-            <div class="image-responsive"  style="height: 85%" ng-if="name">
-
-            <img src="/assets/img/preview.png" width="100%" >
-              
+</md-content>
+</md-sidenav>
+<div class="wrapper grey-background"  style="margin-top:80px">
+    <div class="container">
+        <div class="row">
+            <div class="col l12 col m12 col s12 center-align">
+                <!-- Breadcrumb -->
+               <ol class="breadcrumb">
+                <li><a ui-sref="main" href="">Home</a></li>
+                <li ng-repeat="b in breadcrumb.items | reverse">
+                    <a href="/" ng-if="!$last">{{b.name}}</a>
+                    <span ng-if="$last">{{b.name}}</span>
+                </li>
+            </ol>
             </div>
-            <p>{{name}}<br/>{{formart}} &nbsp;{{size}}<br/>
-            </p>
+        </div>
 
-            </div>
-            </div>
-            <div class="col-md-8">
-              <p>
-
-                <table  class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>Adspace</th>
-                                <th>Buy Type</th>
-                                <th></th>
-                                
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr data-ng-repeat="adspace in product.variants"  ng-click="preview(adspace)">
-                             
-                                <td>{{adspace.name}}<br><span><small>{{adspace.size}} &nbsp;{{adspace.maxSize}} &nbsp;{{adspace.formart}}</small></span></td>
-                                <td> {{adspace.price | currency}}<br><small>{{adspace.model}}</small></td>
-                                <td><small><!-- <div class="btn-group  btn-min">
-                        <a ui-sref="productDetail({id:adspace.id, slug:product.slug})" class="btn btn-default  btn-min">View detail</a> -->
-                        <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name,  price:adspace.price}, -1)" ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">-</a>
-
-                        <a ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">{{getQuantity(adspace.sku)}}</a>
-
-                        <!-- <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name, price:adspace.price}, +1)" ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">+</a> -->
+        <div class="row">
+            <div class="col l12 col m12 col s12">
+                <div class="product-detail z-depth-1">
+                    <div class="col l2 col s12 col m2">
+                        <!-- Product Images -->
+                        <div class="product-images">
+                           
+                            <a href="javascript:void(0);"><img  ng-show="product.variants[0].image.base64" class="responsive-img"   data-ng-src="data:image/png;base64,{{product.variants[0].image.base64}}" data-err-src="images/png/avatar.png"/><img ng-hide="product.variants[0].image.base64" ng-src="/assets/products/{{product.variants[0].image}}"
+                                  err-src="/assets/images/photo.png" class="responsive-img">
+</a>
+                            <a href="javascript:void(0);"><img  ng-show="product.variants[0].image.base64" class="responsive-img"   data-ng-src="data:image/png;base64,{{product.variants[0].image.base64}}" data-err-src="images/png/avatar.png"/><img ng-hide="product.variants[0].image.base64" ng-src="/assets/products/{{product.variants[0].image}}"
+                                  err-src="/assets/images/photo.png" class="responsive-img">
+</a>
+                            <a href="javascript:void(0);"><img  ng-show="product.variants[0].image.base64" class="responsive-img"   data-ng-src="data:image/png;base64,{{product.variants[0].image.base64}}" data-err-src="images/png/avatar.png"/><img ng-hide="product.variants[0].image.base64" ng-src="/assets/products/{{product.variants[0].image}}"
+                                  err-src="/assets/images/photo.png" class="responsive-img">
+</a>
+                            <a href="javascript:void(0);"><img  ng-show="product.variants[0].image.base64" class="responsive-img"   data-ng-src="data:image/png;base64,{{product.variants[0].image.base64}}" data-err-src="images/png/avatar.png"/><img ng-hide="product.variants[0].image.base64" ng-src="/assets/products/{{product.variants[0].image}}"
+                                  err-src="/assets/images/photo.png" class="responsive-img">
+</a>
+                        
                         </div>
-                        <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name,slug:adspace.formart,mrp:adspace.model, weight:adspace.maxSize,size:adspace.size,price:adspace.price ,status: {name:'New', val:402}, publisher:product.name,advertiser:user,uid:product.uid,category:product.brand.name,image:product.logo[0].base64,quantity:1} ,true);" ng-show="checkCart(adspace.sku)" class="btn btn-primary  btn-min"><i class="fa fa-shopping-cart"></i></a>
-                      </div> 
-</small></td>
-                                
-                            </tr>
-                            
-                            </tbody>
-                        </table>
-                 </p>
+                    </div>
+                    <div class="col l6 col s12 col m6">
+                        <!-- Main Product Image -->
+                         <div class="main-product">
+                                   <img  ng-show="product.variants[0].image.base64" class="responsive-img"   data-ng-src="data:image/png;base64,{{product.variants[0].image.base64}}" data-err-src="images/png/avatar.png"/>
+
+                      <img ng-hide="product.variants[0].image.base64" ng-src="/assets/products/{{product.variants[0].image}}"
+                                  err-src="/assets/images/photo.png" class="responsive-img">
+                       </div>
+                    </div>
+
+
+
+
+                    <div class="col l4 col s12 col m4 no-padding">
+                        <!-- Product Detail -->
+                        <div class="single-product-detail center-align">
+                            <!-- Product Price -->
+                            <div class="product-price"><del>{{product.variants[i].mrp | currency}}</del>&nbsp;{{product.variants[i].price | currency}}</p></div>
+                            <!-- Product Name -->
+                            <div class="product-name">{{product.name}}</div>
+                            <!-- Product Category -->
+                            <div class="product-category">{{product.category.name}}</div>
+                            <!-- Product Bonus -->
+                            <a class="bonus" ng-show="product.variants[i].mrp">Save {{ product.variants[i].mrp - product.variants[i].price | currency}}</a>
+                            <!-- Product Shopping Cart Button -->
+                            <button onclick="Materialize.toast('<span>Item Added To Cart</span>', 5000)"  ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" class="btn waves-effect waves-light shopping-button" type="submit" name="action" >Add to Shopping Cart</button>
+                            <div class="border"></div>
+                            <!-- Product different Button -->
+                            <div class="add-button">
+                                <a href="javascript:void(0);" onclick="Materialize.toast('<span>Item Added To Wishlist</span>', 5000)" <a ng-click="wishlist.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                <a href="javascript:void(0);" onclick="Materialize.toast('<span>Item Added To Comparison</span>', 5000)"><i class="fa fa-outdent"></i>Add to Compare</a>
+                                <a href="javascript:void(0);"><i class="fa fa-print"></i> Print Version</a>
+                            </div>
+                            <div class="border"></div>
+                            <!-- Product Delivery Cost -->
+                            <div class="cost-delivery"> <i class="fa fa-truck"></i> Delivered at your doorstep <br></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-           </div>
+        </div>
+
+        <div class="row">
+            <div class="col l12">
+                <!-- Product Description -->
+                <div class="product-description z-depth-1">
+                    <div class="col l8 offset-l2">
+                        <div ng-if="product.info">
+                            <h6>Product details</h6>
+                            <p>{{product.info}}</p> 
+                      </div>
+
+                             <div class="row"> 
+                    <div class="col-md-3">
+                        <div ng-if="product.brand">
+                          <h6>Brand</h6>
+                          <ul>
+                              <li><a href="/Brand/{{product.brand.name}}/{{product.brand._id}}">{{product.brand.name}}</a></li>
+                          </ul>
+                        </div>
+                    </div>
+
+                     <div class="col-md-3">
+
+                         <div ng-if="product.features.length>0">
+                          <h6>Features</h6>
+                          <ul>
+                              <li ng-repeat="f in product.features">{{f.key}} : {{f.val}}</li>
+                          </ul>
+                          </div>
+                     </div>
+                    <div class="col-md-3">
+                          <div ng-if="product.category">
+                          <h6>Category</h6>
+                          <ul>
+                              <li><a href="/Category/{{product.category.slug}}/{{product.category._id}}">{{product.category.name}}</a></li>
+                          </ul>
+                          </div>
+                    </div>
+                    <div class="col-md-3">
+                            <div ng-if="product.variants[i]">
+                          <h6>Weight</h6>
+                          <ul>
+                              <li>{{product.variants[i].weight}}</a></li>
+                          </ul>
+                          </div>
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+        </div >
+
+        <div class="container" style="margin-top:20px">
+        <div class="product-description z-depth-1">
+                        <div class="title">You may also like:</div>
+                       
+                            <div class="row" style='margin-right: 100px'> 
+                <div class="col l2 col m6 ">
+                    <div class="ad ">
+                        <div class="twitter">
+                        </div>
+                    </div>
+                </div>
+                <div class="col l3 col m6 " data-ng-repeat="product in products.items|limitTo:6">
+                <div class="product z-depth-1" >
+                    <!-- Product Image -->
+                    <div class="image">
+                        <a href="#">
+                           <img ng-src="/assets/products/{{product.variants[0].image}}"
+                                        err-src="/assets/images/photo.png"   class="responsive-img" alt="Product">
+                        </a>
+                        </a>
+                        <!-- Product Hover -->
+                        <div class="product-hover">
+                            <div class="button-group">
+                                   
+                                   
+                                    <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Add To Cart" onclick="Materialize.toast('<span>Item Added</span>', 5000)" ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);"><i class="fa fa-shopping-cart"></i></a>
+                                   
+                                <a class="btn tooltipped" data-position="top"  data-delay="50" data-tooltip="Add To Wishlist" onclick="Materialize.toast('<span>Item Added To Wishlist</span>', 5000)" ng-click="wishlist.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);"><i class="fa fa-star"></i></a>
+                               
+                                        
+                                       
+                                        <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Gift Someone" onclick="Materialize.toast('<span>Item Added</span>', 5000)"><i class="fa fa-gift"></i></a>
+                                      
+                               
+                              
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Description -->
+                 <div class="content">
+                        <!-- Product Name -->
+                        <div class="product-name">
+                            <a href="#">{{product.name}}</a>
+                        </div>
+                        <!-- Product Category 
+                        <div class="product-category">Category</div>-->
+                        <!-- Product Price -->
+                        <div class="product-price">{{product.variants[0].price|currency}}</div>
+                    </div>
+
+                </div>
+            </div>
               
-                  <hr>
-                  
-          </div>
+            </div>
+        </div>
+        
     </div>
 </div>
+</div>
+

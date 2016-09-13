@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta charset="utf-8"/>
+    <title>Aardath - Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+
+    <link href="assets/plugins/pace/pace-theme-flash.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/plugins/swiper/css/swiper.css" rel="stylesheet" type="text/css" media="screen"/>
+
+
+    <link class="main-stylesheet" href="pages/css/pages.css" rel="stylesheet" type="text/css"/>
+    <link class="main-stylesheet" href="pages/css/pages-icons.css" rel="stylesheet" type="text/css"/>
+</head>
+<body class="pace-primary" ng-app="SiteApp">
+
+<nav class="header transparent-dark">
+    <div class="container relative ">
+        <nav class="header md-header relative p-l-30 p-r-30 sm-p-l-25 sm-p-r-25 dark" data-pages="header">
+
+            <div class="pull-left">
+
+                <div class="header-inner">
+
+                    <a href="index.php"><img src="assets/images/logo_white.png" class="logo" width="105" height="29"
+                                             data-src-retina="assets/images/logo.png" alt="">
+                        <a class="light text-white text-center font-montserrat text-uppercase m-l-20 large-text">BLOG</a></a>
+                </div>
+            </div>
+            <div class="pull-right">
+
+                <div class="visible-sm-inline visible-xs-inline menu-toggler pull-right" data-pages="header-toggle" data-pages-element="#header">
+                    <div class="one"></div>
+                    <div class="two"></div>
+                    <div class="three"></div>
+                </div>
+            </div>
+
+            <div class="pull-right ">
+                <div class="menu-content mobile-dark clearfix" data-pages-direction="slideRight" id="header">
+
+                    <div class="pull-right">
+                        <a href="#" class="padding-10 visible-xs-inline visible-sm-inline pull-right m-t-10 m-b-10 m-r-10" data-pages="header-toggle" data-pages-element="#header">
+                            <i class=" pg-close_line"></i>
+                        </a>
+                    </div>
+
+
+                    <div class="header-inner">
+                        <ul class="menu">
+                            <li>
+                                <a class="active" href="blog.php" data-text="Home">Home
+                                    <span data-text="Welcome">Welcome</span>
+                                </a>
+                            </li>
+                            <li class="classic">
+                                <a href="javascript:;" data-text="About">
+                                    About <i class="pg-arrow_minimize m-l-5"></i>
+                                    <span data-text="Aardath">Aardath</span>
+                                </a>
+                                <nav class="classic ">
+                                    <span class="arrow"></span>
+                                    <ul>
+                                        <li>
+                                            <a href="about.php">Company Overview</a>
+                                        </li>
+                                        <li>
+                                            <a href="leadership.php">Leadership</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Investor Relations</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </li>
+                            <li>
+                                <a href="businesses.php" data-text="Businesses">Businesses
+                                    <span data-text="Subsidiaries">Subsidiaries</span></a>
+                            </li>
+                            <li>
+                                <a href="#" data-text="Partners">Partners
+                                    <span data-text="Business">Business</span> </a>
+                            </li>
+                            <li>
+                                <a href="contact.php" data-text="Contact Us">Contact Us
+                                    <span data-text="Get in touch">Get in touch </span></a>
+                            </li>
+                        </ul>
+                        <a href="#" class="search-toggle hidden-xs hidden-sm" data-toggle="search"><i class="fs-14 pg-search"></i></a>
+
+                        <div class="font-arial m-l-35 m-r-35 m-b-20 m-t-30 visible-sm visible-xs">
+
+                            <p class="fs-11 small-text muted">Copyright &copy; 2016 Aardath</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</nav>
+
+
+<section class="jumbotron full-height bg-primary demo-height-2" data-pages="parallax">
+    <div class="full-height" data-pages-bg-image="assets/images/gallery_5.jpg" data-bg-overlay="red" data-overlay-opacity="0.1">
+        <div class="container-xs-height full-height inner">
+            <div class="col-xs-height col-middle text-left">
+                <div class="container">
+                    <div class="col-sm-12">
+                        <h1 class="light text-white text-center invisible">We empower our customers with the fundamental infrastructure for commerce</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="p-b-15 p-t-15 bg-white text-center text-white">
+    <h3 class="inline ">We aim to build the future infrastructure of commerce</h3>
+    <button class="btn btn-cons btn-bordered m-l-20 xs-m-b-15 btn-black" type="button">Discover</button>
+</section>
+<section class="p-b-30 p-t-40 bg-master-lighter">
+    <div class="container">
+        <div class="social-wrapper">
+
+            <div class="social " data-pages="social">
+                <div class="feed">
+
+                    <div class="day" data-social="day">
+
+                        <div class="card share  col1" data-social="item">
+                            <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                            </div>
+                            <div class="card-header clearfix">
+                                <div class="user-pic">
+                                    <img alt="Profile Image" width="33" height="33" data-src-retina="assets/images/profiles/6.png" data-src="assets/images/profiles/6.png" src="assets/images/profiles/6.png">
+                                </div>
+                                <h5>Prosper Jambo</h5>
+                                <h6>Shared a Tweet
+                                    <span class="location semi-bold"><i class="fa fa-map-marker"></i> ZW, Harare</span>
+                                </h6>
+                            </div>
+                            <div class="card-description">
+                                <p>What you think, you become. What you feel, you attract. What you imagine, you create - Buddha. <a href="#">#quote</a> </p>
+                                <div class="via">via Twitter</div>
+                            </div>
+                        </div>
+
+
+                        <div class="card share  col1" data-social="item">
+                            <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                            </div>
+                            <div class="card-header clearfix">
+                                <div class="user-pic">
+                                    <img alt="Profile Image" width="33" height="33" data-src-retina="assets/images/profiles/6.png" data-src="assets/images/profiles/6.png" src="assets/images/profiles/6.png">
+                                </div>
+                                <h5>Lokhuzeni Indaba</h5>
+                                <h6>Posted
+                                    <span class="location semi-bold"><i class="fa fa-map-marker"></i> ZW, Bulawayo</span>
+                                </h6>
+                            </div>
+                            <div class="card-description">
+                                <p>What a lovely day! I think I should go and play outside.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="card share share-other col1" data-social="item">
+                            <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                            </div>
+                            <div class="card-content">
+                                <ul class="buttons ">
+                                    <li>
+                                        <a href="#"><i class="fa fa-expand"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-heart-o"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <img alt="Quote" src="assets/images/gallery_5.jpg" class="lazy">
+                            </div>
+                            <div class="card-description">
+                                <p>Like if you agree</p>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <div class="time">few seconds ago</div>
+                                <ul class="reactions">
+                                    <li><a href="#">5,345 <i class="fa fa-comment-o"></i></a>
+                                    </li>
+                                    <li><a href="#">23K <i class="fa fa-heart-o"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-header clearfix">
+                                <div class="user-pic">
+                                    <img alt="Profile Image" width="33" height="33" data-src-retina="assets/images/profiles/5.png" data-src="assets/images/profiles/5.png" src="assets/images/profiles/5.png">
+                                </div>
+                                <h5>Tracy Brooks</h5>
+                                <h6>Shared a photo on our wall</h6>
+                            </div>
+                        </div>
+
+
+                        <div class="card share share-other col1" data-social="item">
+                            <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                            </div>
+                            <div class="card-content">
+                                <ul class="buttons ">
+                                    <li>
+                                        <a href="#"><i class="fa fa-expand"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-heart-o"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <img alt="Person photo" src="assets/images/gallery_2.jpg" class="lazy">
+                            </div>
+                            <div class="card-description">
+                                <p><a href="#">#TBT</a> :D</p>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <div class="time">few seconds ago</div>
+                                <ul class="reactions">
+                                    <li><a href="#">5,345 <i class="fa fa-comment-o"></i></a>
+                                    </li>
+                                    <li><a href="#">23K <i class="fa fa-heart-o"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-header clearfix">
+                                <div class="user-pic">
+                                    <img alt="Profile Image" width="33" height="33" data-src-retina="assets/images/profiles/6.png" data-src="assets/images/profiles/6.png" src="assets/images/profiles/6.png">
+                                </div>
+                                <h5>David Nester</h5>
+                                <h6>Shared a link on our wall</h6>
+                            </div>
+                        </div>
+
+
+                        <div class="card share  col1" data-social="item">
+                            <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                            </div>
+                            <div class="card-header clearfix">
+                                <div class="user-pic">
+                                    <img alt="Profile Image" width="33" height="33" data-src-retina="assets/images/profiles/6.png" data-src="assets/images/profiles/6.png" src="assets/images/profiles/6.png">
+                                </div>
+                                <h5>Hamilton Masakadza</h5>
+                                <h6>Shared a Tweet
+                                    <span class="location semi-bold"><i class="fa fa-map-marker"></i> ZW, Harare</span>
+                                </h6>
+                            </div>
+                            <div class="card-description">
+                                <p>Testing can show the presense of bugs, but not their absence.</p>
+                                <div class="via">via Twitter</div>
+                            </div>
+                        </div>
+
+
+                        <div class="card share  col1" data-social="item">
+                            <div class="circle" data-toggle="tooltip" title="Label" data-container="body">
+                            </div>
+                            <div class="card-header clearfix">
+                                <div class="user-pic">
+                                    <img alt="Profile Image" width="33" height="33" data-src-retina="assets/images/profiles/6.png" data-src="assets/images/profiles/6.png" src="assets/images/profiles/6.png">
+                                </div>
+                                <h5>Nathaniel Churu</h5>
+                                <h6>Shared a Tweet
+                                    <span class="location semi-bold"><i class="fa fa-map-marker"></i> ZW, Harare</span>
+                                </h6>
+                            </div>
+                            <div class="card-description">
+                                <p>There is nothing new under the sun, but there are lots of old things we don't know yet.</p>
+                                <div class="via">via Twitter</div>
+                            </div>
+                        </div>
+
+
+                        <div class="card share  col1" data-social="item">
+                            <div class="card-header ">
+                                <h5 class="text-complete pull-left fs-12">News <i class="fa fa-circle text-complete fs-11"></i></h5>
+                                <div class="pull-right small hint-text">
+                                    5,345 <i class="fa fa-comment-o"></i>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="card-description">
+                                <h3>Ebola outbreak: Clinical drug trials to start next month as death toll mounts</h3>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <div class="pull-left">via <span class="text-complete">CNN</span>
+                                </div>
+                                <div class="pull-right hint-text">
+                                    Apr 23
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="card share  col1" data-social="item">
+                            <div class="card-header clearfix">
+                                <h5 class="text-success pull-left fs-12">Stock Market <i class="fa fa-circle text-success fs-11"></i></h5>
+                                <div class="pull-right small hint-text">
+                                    5,345 <i class="fa fa-comment-o"></i>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="card-description">
+                                <h5 class='hint-text no-margin'>Innscor Inc.</h5>
+                                <h5 class="small hint-text no-margin">NASDAQ: INNSC - Aug 1 8:37 AM GMT</h5>
+                                <h3>111.25 <span class="text-success"><i class="fa fa-sort-up small text-success"></i> 0.15 (0.13%)</span></h3>
+                            </div>
+                            <div class="card-footer clearfix">
+                                <div class="pull-left">by <span class="text-success">Strive Masiwa</span>
+                                </div>
+                                <div class="pull-right hint-text">
+                                    Apr 23
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php
+include_once ('footer.php');
+?>
+
+
+<div class="overlay hide" data-pages="search">
+
+    <div class="overlay-content full-height has-results">
+
+        <div class="container relative full-height">
+
+            <div class="container-fluid">
+
+                <a href="#" class="close-icon-light overlay-close text-black fs-16 top-right">
+                    <i class="pg-close_line"></i>
+                </a>
+
+            </div>
+            <div class="container-fluid">
+                <div class="inline-block bottom-right m-b-30">
+                    <div class="checkbox right">
+                        <input id="checkboxn" type="checkbox" value="1" checked="checked">
+                        <label for="checkboxn">Search within page</label>
+                    </div>
+                </div>
+            </div>
+            <div class="container-xs-height full-height">
+                <div class="col-xs-height col-middle text-center">
+
+                    <input id="overlay-search" class="no-border overlay-search bg-transparent col-sm-6 col-sm-offset-4" placeholder="Search..." autocomplete="off" spellcheck="false">
+                    <br>
+                    <div class="inline-block bottom-left m-l-10 m-b-30 hidden-xs">
+                        <p class="fs-14"><i class="fa fa-search m-r-10"></i> Press enter to search</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="assets/plugins/pace/pace.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="pages/js/pages.image.loader.js"></script>
+<script type="text/javascript" src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="assets/plugins/swiper/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="assets/plugins/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="assets/plugins/velocity/velocity.ui.js"></script>
+
+<script type="text/javascript" src="assets/plugins/jquery-unveil/jquery.unveil.min.js"></script>
+
+<script type="text/javascript" src="assets/plugins/vide/jquery.vide.min.js"></script>
+
+<script src="assets/plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+<script src="assets/plugins/jquery-isotope/isotope.pkgd.min.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" src="pages/js/pages.frontend.js"></script>
+<script type="text/javascript" src="pages/js/pages.social.js"></script>
+
+
+<script type="text/javascript" src="assets/js/custom.js"></script>
+
+</html>

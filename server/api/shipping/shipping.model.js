@@ -9,6 +9,7 @@ var ShippingSchema = new Schema({
   carrier: String,
   country: String,
   charge: Number,
+  time: String,
   minWeight: Number,
   maxWeight: Number,
   freeShipping: Number,

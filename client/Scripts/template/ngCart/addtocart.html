@@ -1,0 +1,19 @@
+
+<div ng-hide="attrs.id">
+	<button kendo-button class="k-primary" ng-disabled="true" ng-transclude>Add</button>
+   </div>
+<div ng-show="attrs.id">
+    <div>
+
+    <button kendo-button class="k-primary" ng-click="ngCart.addItem(id, name, price, q, data,publisher)"
+           ng-transclude>Add</button>
+        <mark  ng-show="inCart()">
+        In Cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">x</a>
+    </mark>
+        
+       
+    </div>
+    
+
+</div>
+

@@ -1,0 +1,143 @@
+<!-- Main Wrapper -->
+<div class="wrapper grey-background" style="margin-top:100px">
+    <div class="container">
+        <div class="row">
+            <div class="col l12 col m12 col s12 center-align">
+                <!-- Breadcrumb -->
+                <div class="breadcrumb">
+                    <a href="#">MarketPlace</a> <i class="fa fa-angle-right"></i> Shop <i class="fa fa-angle-right"></i>Wishlist
+                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l12 col m12 col s12">
+                <!-- Shopping Cart -->
+                <div class="shopping-cart z-depth-1">
+
+                   
+                    <table class="bordered">
+                        <thead>
+                        <!-- table Title -->
+                        <tr>
+                            <th class="width-150">Photo</th>
+                            <th class="left">Title</th>
+                            <th>Cost</th>
+                            <th>Number</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                                <tr  ng-repeat="item in wishlist.items">
+                                    <!-- product Image -->
+                                    <td> <img  ng-src="/assets/products/{{item.image}}"
+                                  err-src="/assets/images/photo.png"  class="responsive-img">
+                                    <!-- product Name -->
+                                    <td>
+                                        <div class="product-name"><div class="visible-xs">name</div>{{item.name}}<br></div>
+                                        <div class="size">Size: xxxl</div>
+                                    </td>
+                                    <!-- product Cost -->
+                                    <td>
+                                    <div class="visible-xs">Price</div>{{item.price | currency}}
+                                    <input id="product_price" name="product_price" type="hidden" value="" />
+                                    </td>
+                                    <!-- product Number -->
+                                    <td>
+                                        <div class="visible-xs">Qty.</div>
+                                        <div class="number">
+                                            <input id="amnt" name="amnt" type="number" min="1" max="12" class="input-text qty" title="Qty" size="4"  ng-model="item.quantity" value="1">
+                                        </div>
+                                    </td>
+                                    <!-- product Amount -->
+                                    <td>
+                                    <div class="amount"><div id="totalPrice" class="visible-xs">Amount</div>{{item.price * item.quantity | currency}}</div>
+                                    
+                                    </td>
+                                    <!-- product Remove Button -->
+                                    <td><a href="@" ng-click="wishlist.addItem({sku:item.sku}, -10000000)"><i class="mdi-action-highlight-remove"></i></a></td>
+                                </tr>
+                               
+                        </tbody>
+                    </table>
+
+                    <div class="left">
+                        <!-- Cintinue Shopping Button -->
+                        <button class="btn btn-flat waves-effect waves-light shopping-cart-button" type="button" onclick="location.href='index.php';">Continue Shopping</button>
+                    </div>
+                    <div class="right">
+                        <!-- Clear Shopping Cart Button -->
+                        <!-- <button class="btn btn-flat waves-effect waves-light shopping-cart-button margin-right-15" onclick="Materialize.toast('<span>Shopping Cart Cleared</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000)">Clear Shopping Cart</button> -->
+                        <!-- Update Shopping Cart Button -->
+                        <button class="btn btn-flat waves-effect waves-light shopping-cart-button" onclick="Materialize.toast('<span>Shopping Cart Updated</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;#!&quot;><a>', 5000)">Update Shopping Cart</button>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="border"></div>
+                    <div class="order-quates">
+                        <div class="col l4 col m7 no-padding">
+                            <div class="title">Discount Codes</div>
+                            <p>Enter Your Coupon Code if you <br> Have one</p>
+                            <!-- Coupon Code Input -->
+                            <div class="col l7 no-padding margin-right-15">
+                                <input id="coupon" type="text" class="validate">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="title gift">GIFT CARD</div>
+                            <!-- Coupon Code Checkbox -->
+                            <input type="checkbox" class="filled-in" id="test5" />
+                            <label for="test5"> Use gift Card to Checkout</label>
+                        </div>
+                        
+                        <div class="col l4 col m7 no-padding">
+                            <div class="title">Delivery</div>
+                            <p>Enter delivery address if you <br> need your purchases delivered</p>
+                            <!-- Coupon Code Input -->
+                            <input placeholder='Address' id="coupon" type="text" class="validate" />
+                            
+                            <div class="clearfix"></div>
+                            <!-- Coupon Code Checkbox -->
+                            <input type="checkbox" class="filled-in" id="my_address" />
+                            <label for="my_address"> Use my address</label>
+                        </div>
+
+                        <div class="col l4 col m5">
+                            <!-- Product Calculation -->
+                            <div class="product-calculation">
+                                <ul>
+                                    <li> Subtotal </li>
+                                    <li> Total Items </li>
+                                    <li> VAT </li>
+                                    <li class="bold">Grand Total </li>
+                                </ul>
+                                <ul class="blue-text">
+                                    <li> {{wishlist.getTotalPrice() | currency}}</li>
+                                    <li>({{wishlist.getTotalCount()}} items)</li>
+                                     <li>{{wishlist.getTotalPrice() *(0.15) | currency}}</li>
+                                    <li style='font-weight: 700'>{{wishlist.getTotalPrice() | currency}}</li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <!-- Continue Shopping Button -->
+                                <button class="btn btn-flat waves-effect waves-light checkout" type="button" onclick="window.location.href='/checkout'">Proceed to Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                   
+                            <div ng-show="wishlist.getTotalCount()<1" class="center-align" style="padding-top: 25px; padding-bottom: 25px;">
+                                <div style="padding-top: 25px; padding-bottom: 25px;">
+                                    <a style="padding-top: 25px; "><i class="fa fa-shopping-cart" style="color: black;"></i></a>
+                                </div>
+                                
+                                <div class="title center-align" style="padding-top: 25px;">Shopping Cart Empty</div>
+                                
+                                <div style="padding-top: 25px; padding-bottom: 25px;">
+                                    <button class="btn btn-flat waves-effect waves-light shopping-cart-button" type="button" onclick="location.href='index.php';">Start Shopping</button>
+                                </div>
+                            </div>
+                          
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

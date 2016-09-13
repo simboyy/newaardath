@@ -32,7 +32,10 @@
     "angular-simple-chat": "~1.0.10",
     "angular-material": "~1.0.7",
     "angular-random-string": "~0.1.0",
-    "angular-filter": "~0.5.8"
+    "angular-filter": "~0.5.8",
+    "angular-base64-upload": "~0.1.19",
+    "ng-table": "~0.8.3",
+    "angular-smart-table": "~2.1.8"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

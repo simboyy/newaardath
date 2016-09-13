@@ -1,15 +1,34 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('CheckoutCtrl', function ($scope, Order, PaymentMethod, Shipping, Coupon, Country) {
+  .controller('CheckoutCtrl', function ($scope,Auth, Order, PaymentMethod, Shipping, Coupon, Country,Suburb) {
       $scope.msg = 'No items in cart.';
       $scope.customer = {};
       $scope.coupon = {};
 
-      Country.query().$promise.then(function(res){
+
+      var user = Auth.getCurrentUser();
+    console.log(user.name);
+
+    $scope.customer.name = user.name +" "+user.lastname;
+    $scope.customer.address = user.address;
+    $scope.customer.phone = user.phone ;
+
+
+
+     Suburb.active.query().$promise.then(function(res){
+        $scope.suburbs = res;
+        console.log(res);
+        
+      });
+
+  	 Country.active.query().$promise.then(function(res){
         $scope.countries = res;
         $scope.customer.country = {"name":"Zimbabwe","dial_code":"+263","code":"ZW"};
+        console.log(res);
+        
       });
+
 
       PaymentMethod.active.query().$promise.then(function(res){
         $scope.paymentMethods = res;
@@ -17,7 +36,7 @@ angular.module('shopnxApp')
         // $scope.customer.paymentMethod.options = {shipping : 100};
       });
 
-      Shipping.best.query({country:'India', active:true},function(res){
+      Shipping.best.query({country:'Zimbabwe', active:true},function(res){
         $scope.shipping = res;
         $scope.cart.getTotalPriceAfterShipping(res, $scope.couponAmount);
       });
@@ -26,14 +45,15 @@ angular.module('shopnxApp')
       $scope.calculateShipping = function(country){
         Shipping.best.query({country:country.name, active:true},function(res){
           $scope.shipping = res;
+          console.log(res);
           $scope.cart.getTotalPriceAfterShipping(res, $scope.couponAmount);
         });
       };
 
       $scope.placeOrder = function(cart,shipping){
 
-        console.log(cart);
-        var data = {phone:$scope.customer.phone, name:$scope.customer.name, address:$scope.customer.address, city:$scope.customer.city, payment:'Pending', items:cart, shipping:shipping};
+      	
+        var data = {phone:$scope.customer.phone, name:$scope.customer.name, address:$scope.customer.address, city:$scope.customer.city, payment:'Pending', items:cart, shipping:shipping,future:$scope.customer.future,date:$scope.customer.date,time:$scope.customer.time};
         Order.save(data);
         $scope.msg = 'Processing Payment ...';
       };

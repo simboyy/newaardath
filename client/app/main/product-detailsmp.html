@@ -1,0 +1,130 @@
+<div class="wrapper grey-background"  style="margin-top:80px">
+    <div class="container">
+        <div class="row">
+            <div class="col l12 col m12 col s12 center-align">
+                <!-- Breadcrumb -->
+               <ol class="breadcrumb">
+                <li><a ui-sref="main" href="">Home</a></li>
+                <li ng-repeat="b in breadcrumb.items | reverse">
+                    <a href="/" ng-if="!$last">{{b.name}}</a>
+                    <span ng-if="$last">{{b.name}}</span>
+                </li>
+            </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col l12 col m12 col s12">
+                <div class="product-detail z-depth-1">
+                    <div class="col l2 col s12 col m2">
+                        <!-- Product Images -->
+                        <div class="product-images">
+                           
+                            <a href="javascript:void(0);"><img alt="Product" class="responsive-img" src="images/products/product7.jpg"></a>
+                            <a href="javascript:void(0);"><img alt="Product" class="responsive-img" src="images/products/product7.jpg"></a>
+                            <a href="javascript:void(0);"><img alt="Product" class="responsive-img" src="images/products/product7.jpg"></a>
+                            <a href="javascript:void(0);"><img alt="Product" class="responsive-img" src="images/products/product7.jpg"></a>
+                        
+                        </div>
+                    </div>
+                    <div class="col l6 col s12 col m6">
+                        <!-- Main Product Image -->
+                        <div class="main-product">
+                             <img  ng-src="/assets/products/{{product.variants[0].image}}"
+                                  err-src="/assets/images/photo.png" class="responsive-img">
+                        </div>
+                    </div>
+                    <div class="col l4 col s12 col m4 no-padding">
+                        <!-- Product Detail -->
+                        <div class="single-product-detail center-align">
+                            <!-- Product Price -->
+                            <div class="product-price">${{product.variants[i].mrp}}</del>&nbsp;${{product.variants[i].price}}</p>/div>
+                            <!-- Product Name -->
+                            <div class="product-name">{{product.name}}</div>
+                            <!-- Product Category -->
+                            <div class="product-category">Category</div>
+                            <!-- Product Bonus -->
+                            <a class="bonus">Save 400</a>
+                            <!-- Product Shopping Cart Button -->
+                            <button class="btn waves-effect waves-light shopping-button" type="submit" name="action" >Add to Shopping Cart</button>
+                            <div class="border"></div>
+                            <!-- Product different Button -->
+                            <div class="add-button">
+                                <a href="javascript:void(0);" onclick="Materialize.toast('<span>Item Added To Wishlist</span>', 5000)"><i class="fa fa-heart"></i> Add to wishlist</a>
+                                <a href="javascript:void(0);" onclick="Materialize.toast('<span>Item Added To Comparison</span>', 5000)"><i class="fa fa-outdent"></i>Add to Compare</a>
+                                <a href="javascript:void(0);"><i class="fa fa-print"></i> Print Version</a>
+                            </div>
+                            <div class="border"></div>
+                            <!-- Product Delivery Cost -->
+                            <div class="cost-delivery"> <i class="fa fa-truck"></i>Cost Of Delivery <br>$ 400</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col l12">
+                <!-- Product Description -->
+                <div class="product-description z-depth-1">
+                    <div class="col l8 offset-l2">
+                        <div class="title">Description</div>
+                          {{product.info}}
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="row">
+                <div class="col l12">
+                    <div class="product-description z-depth-1">
+                        <div class="title">You may also like:</div>
+                       
+
+                            <div class="row">
+                                    <div class="col l3 col m6">
+                                    <div class="product z-depth-1">
+                                        <!-- Product Image -->
+                                        <div class="image">
+                                            <a href="#">
+                                                <img src="images/products/product5.jpg"  class="responsive-img" alt="Product">
+                                            </a>
+                                            <!-- Product Hover -->
+                                            <div class="product-hover">
+                                                <div class="button-group">
+                                                        <a class="btn_added tooltipped" data-position="top" data-delay="50" data-tooltip="Already In Cart"><i class="fa fa-shopping-cart"></i></a>
+                                                       
+                                                        <a href="#" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Add To Cart" onclick="Materialize.toast('<span>Item Added</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;cart.php&quot;>View Cart<a>', 5000)"><i class="fa fa-shopping-cart"></i></a>
+                                                        
+                                                    <a class="btn tooltipped" data-position="top"  data-delay="50" data-tooltip="Add To Wishlist" onclick="Materialize.toast('<span>Item Added To Wishlist</span>', 5000)"><i class="fa fa-star"></i></a>
+                                                   
+                                                            <a class="btn_added tooltipped" data-position="top" data-delay="50" data-tooltip="Already In Gifts"><i class="fa fa-gift"></i></a>
+                                                          
+                                                            <a href="" class="btn tooltipped" data-position="top" data-delay="50" data-tooltip="Gift Someone" onclick="Materialize.toast('<span>Item Added</span><a class=&quot;btn-flat yellow-text&quot; href=&quot;cart.php&quot;
+                                                    <a href="#" class="btn tooltipped" data-position="top" data-delay="50"data-tooltip="View Product"><i class="fa fa-expand"></i></a>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Product Description -->
+                                        <div class="content">
+                                            <!-- Product Name -->
+                                            <div class="product-name">
+                                                <a href="#">Title</a>
+                                            </div>
+                                            <!-- Product Category -->
+                                            <div class="product-category">Category</div>
+                                            <!-- Product Price -->
+                                            <div class="product-price">$ 4500</div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
