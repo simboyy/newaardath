@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 var config = require('./config/environment');
 //update
 // Connect to database
- mongoose.connect(process.env.MONGOLAB_URI);
+ mongoose.connect('mongodb://simba:1994kingsss@ds155097.mlab.com:55097/heroku_dmhlxkx0);
 //mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.connection.on('error', function(err) {
 	console.error('MongoDB connection error: ' + err);
